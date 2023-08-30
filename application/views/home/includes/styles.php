@@ -90,6 +90,7 @@
         }
         .sections__container span:hover > a{
             color: var(--qutiiz-white);
+            
         }
         .sections__container {
             margin-left: -10px;
@@ -108,4 +109,7 @@
         .main-menu .main-menu__list>li>ul, .main-menu .main-menu__list>li>ul>li>ul, .stricky-header .main-menu__list>li>ul, .stricky-header .main-menu__list>li>ul>li>ul{
             left: -540%!important; 
         }
+        .sections__container a {
+    text-align: left !important;
+}
     </style>

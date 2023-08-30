@@ -22,6 +22,9 @@
         .text-align li {
             text-align: left;
         }
+        .about-page__img img{
+            object-fit: cover !important;
+        }
     </style>
 </head>
 
@@ -55,9 +58,9 @@
                 <div class="page-header__inner">
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="index.html">Home</a></li>
-                        <li class="active">training</li>
+                        <li class="active">service</li>
                     </ul>
-                    <h2>project Details</h2>
+                    <h2>service Details</h2>
                 </div>
             </div>
         </section>
@@ -175,7 +178,7 @@
             </div>
         </section>
 
-       
+        <?php if(count($services_types) > 0 || count($services_we_choose) > 0):?>
         <!--Services Two Start-->
         <section class="services-two">
             <div class="container">
@@ -184,16 +187,32 @@
                         <h2 class="section-title__title">Meet expert people</h2>
                     </div>
                 <div class="row">
-                <?php $i = 1;
-                            foreach ($services_types as $faqs): ?>
+                    <?php $i = 1;
+                            foreach ($services_types as $service): ?>
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                         <!--Services Two Single-->
                         <div class="services-two__single">
                             <div class="services-two__icon">
                                 <span class="icon-online-shopping"></span>
                             </div>
-                            <h3 class="services-two__title"><a href="website-development.html"><?php echo $faqs['name']; ?></a></h3>
-                            <p class="services-two__text"><?php echo $faqs['description']; ?></p>
+                            <h3 class="services-two__title"><a href="website-development.html"><?php echo $service['name']; ?></a></h3>
+                            <p class="services-two__text"><?php echo $service['description']; ?></p>
+                            <a class="services-two__arrow" href="website-development.html"></a>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="row">
+                    <?php $i = 1;
+                            foreach ($services_we_choose as $service): ?>
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <!--Services Two Single-->
+                        <div class="services-two__single">
+                            <div class="services-two__icon">
+                                <span class="icon-online-shopping"></span>
+                            </div>
+                            <h3 class="services-two__title"><a href="website-development.html"><?php echo $service['name']; ?></a></h3>
+                            <p class="services-two__text"><?php echo $service['description']; ?></p>
                             <a class="services-two__arrow" href="website-development.html"></a>
                         </div>
                     </div>
@@ -202,6 +221,7 @@
             </div>
         </section>
         <!--Services Two End-->
+        <?php endif;?>
         <?php if (count($service_faqs) > 0) { ?>
 
             <!--FAQ Page Start-->
@@ -244,6 +264,7 @@
             <!--FAQ Page End-->
         <?php } ?>
 
+        
         <!--Similar Work Start-->
         <section class="similar-work">
             <div class="container">
@@ -252,48 +273,25 @@
                     <h2 class="section-title__title">similar training</h2>
                 </div>
                 <div class="row">
+                <?php $i = 1;
+                       foreach ($services as $key=>$service): 
+                       if($key < 3):?>
                     <div class="col-xl-4 col-lg-4">
                         <!--Portfolio One Single-->
                         <div class="project-one__single">
                             <div class="project-one__img">
-                                <img src="<?php echo base_url(); ?>assets/home/images/resources/project-page-img-4.jpg"
+                                
+                                <img src="<?php echo base_url('' . $service['image']); ?>"
                                     alt="">
                                 <div class="project-one__hover">
-                                    <p class="project-one__tagline">Graphic</p>
-                                    <h3 class="project-one__title"><a href="project-details.html">Fimlor Experience</a>
+                                    <p class="project-one__tagline">service</p>
+                                    <h3 class="project-one__title"><a href="project-details.html"><?php echo $service['name']; ?></a>
                                     </h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4">
-                        <!--Portfolio One Single-->
-                        <div class="project-one__single">
-                            <div class="project-one__img">
-                                <img src="<?php echo base_url(); ?>assets/home/images/resources/project-page-img-5.jpg"
-                                    alt="">
-                                <div class="project-one__hover">
-                                    <p class="project-one__tagline">Graphic</p>
-                                    <h3 class="project-one__title"><a href="project-details.html">Fimlor Experience</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4">
-                        <!--Portfolio One Single-->
-                        <div class="project-one__single">
-                            <div class="project-one__img">
-                                <img src="<?php echo base_url(); ?>assets/home/images/resources/project-page-img-6.jpg"
-                                    alt="">
-                                <div class="project-one__hover">
-                                    <p class="project-one__tagline">Graphic</p>
-                                    <h3 class="project-one__title"><a href="project-details.html">Fimlor Experience</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   <?php endif; endforeach;?>
                 </div>
             </div>
         </section>
